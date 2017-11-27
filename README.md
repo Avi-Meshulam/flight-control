@@ -20,6 +20,8 @@ The application includes 3 separate projects (combined in a VS Code workspace):
 	- HTTP communication between simulator and DAL: request-promise
 	- jQuery
 
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/flight-control.gif "flight-control")
+
 Install & Run Instructions:
 --------------------------
 
