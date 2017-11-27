@@ -1,0 +1,56 @@
+/* .list-group-item {
+	border: none;
+} */
+
+.no-padding-horizontal {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.no-padding-left {
+	padding-left: 0;
+}
+
+#speedPercentageRangeSlider .slider-track-low {
+	background: green;
+}
+
+#speedPercentageRangeSlider .slider-selection {
+	background: yellow;
+}
+
+#speedPercentageRangeSlider .slider-track-high {
+	background: red;
+}
+
+#safetyModeSlider .tick-slider-selection {
+	background: ''; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, yellow, red); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, yellow, red); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, yellow, red); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, yellow, red); /* Standard syntax */
+}
+
+#responseTimeSlider .slider-selection {
+	background: red;
+}
+
+#responseTimeSlider .slider-track-high {
+	background: ''; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, red, yellow); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, red, yellow); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, red, yellow); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, red, yellow); /* Standard syntax */
+}
+
+#simulatorIntervalRangeSlider .slider-track-low {
+	background: green;
+}
+
+#simulatorIntervalRangeSlider .slider-selection {
+	background: yellow;
+}
+
+#simulatorIntervalRangeSlider .slider-track-high {
+	background: red;
+}

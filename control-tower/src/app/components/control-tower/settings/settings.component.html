@@ -1,0 +1,54 @@
+<ul class='list-group'>
+	<li class='list-group-item'>
+		<div class='col-xs-5 col-sm-7 col-md-6 no-padding-horizontal'>
+			Simulator Switch:
+		</div>
+		<ui-switch class='col-xs-2 no-padding-left' size='small' switchColor='lightgray' defaultBgColor='red' [(ngModel)]='isSocketConnected'></ui-switch>
+		<div class='no-padding-horizontal'>
+			{{isSocketConnected ? '-&nbsp;ON&nbsp;-' : '-&nbsp;OFF&nbsp;-'}}
+		</div>
+	</li>
+
+	<li class='list-group-item'>
+		<div>
+			Speed Range&nbsp;[% of max. speed]:
+		</div>
+		<div>
+			<b>1</b>
+			<input id='speedPercentageRange' type='text' />
+			<b>100</b>
+		</div>
+	</li>
+
+	<li class='list-group-item'>
+		<div>
+			Safety Mode:
+		</div>
+		<div class='col-xs-offset-1'>
+			<input id='safetyMode' type='text' />
+		</div>
+	</li>
+
+	<li class='list-group-item'>
+		<div>
+			Radio Response Time&nbsp;[ms]:
+		</div>
+		<div>
+			<b>{{radioResponseTimeRange.min}}</b>
+			<input id='responseTime' type='text' />
+			<b>{{radioResponseTimeRange.max}}</b>
+		</div>
+	</li>
+
+	<li class='list-group-item'>
+		<div>
+			Simulator Yield Interval Range&nbsp;[ms]:
+		</div>
+		<div>
+			<b>{{simulatorIntervalLimit.min}}</b>
+			&nbsp;
+			<input id='simulatorIntervalRange' type='text' />
+			<b>{{simulatorIntervalLimit.max}}</b>
+		</div>
+	</li>
+</ul>

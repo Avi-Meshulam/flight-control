@@ -1,0 +1,39 @@
+html {
+	height: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.no-padding-horizontal {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.no-padding-left {
+	padding-left: 0;
+}
+
+.no-padding-right {
+	padding-right: 0;
+}
+
+.interactive {
+	cursor: pointer;
+}
+
+.emergency {
+	background-color: red;
+}
+
+.emergency-canceled {
+	display: none;
+}
