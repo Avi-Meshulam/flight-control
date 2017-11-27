@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "control-tower"
+		},
+		{
+			"path": "simulator"
+		},
+		{
+			"path": "dal"
+		}
+	],
+	"settings": {}
+}
