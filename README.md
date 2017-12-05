@@ -2,24 +2,24 @@
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/flight-control.gif "flight-control")
 
 The application consists of 3 projects, combined in a VS Code workspace:
-1. control-tower (UI Client) - Angular 4
-2. simulator (flights generator) - node.js, express
-3. DAL - node.js, express, mongoose 4
+1. control-tower (UI Client) - [Angular 4](https://angular.io/)
+2. simulator (flights generator) - [node.js](https://nodejs.org/en/), [express](https://expressjs.com/)
+3. DAL - node.js, express, [mongoose 4](http://mongoosejs.com/)
 
-> Communication between UI and Simulator is done via bidirectional socket.
+> Communication between UI and Simulator is done via bidirectional socket ([socket.io](https://github.com/socketio/socket.io),  [socket.io-client](https://github.com/socketio/socket.io-client))
 		
 > Communication between UI/Simulator and DAL is done via HTTP.
 		
 Additional libraries/technologies:
 		
-- Observables: rxjs
-- Graphics: SVG (map/planes/routes)
-- Animation: anime.js
-- UI design: Bootstrap 3
-- Settings UI: bootstrap-slider & ngx-ui-switch
-- Right-click menus: jquery-contextmenu
-- HTTP communication between simulator and DAL: request-promise
-- jQuery
+- Observables: [rxjs](http://reactivex.io/documentation/observable.html)
+- Graphics: SVG (map/planes/routes). Tool: [Inkscape](https://inkscape.org/en/)
+- Animation: [anime.js](https://github.com/juliangarnier/anime)
+- UI design: [Bootstrap 3](https://getbootstrap.com/docs/3.3/)
+- Settings UI: [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) & [ngx-ui-switch](https://github.com/webcat12345/ngx-ui-switch)
+- Right-click menus: [jquery-contextmenu](https://github.com/swisnl/jQuery-contextMenu)
+- HTTP communication between simulator and DAL: [request-promise](https://github.com/request/request-promise)
+- [jQuery](https://jquery.com/)
 
 ## Install & Run Instructions:
 
@@ -38,8 +38,9 @@ Additional libraries/technologies:
 	4. click "OK"
 	5. click "OK" again
 		
-	> Alternativly you can run the following SETX command in cmd.exe, BUT be aware(!): SETX truncates the stored path to 1024 bytes, potentially corrupting your PATH environment variable:
-	> setx /m PATH "%PATH%;C:\Program Files\MongoDB\Server\3.4\bin"
+	> Alternativly you can run the following SETX command in cmd.exe, **but be aware(!) that SETX truncates the stored path to 1024 bytes, potentially corrupting your PATH environment variable**:
+		
+	> SETX /m PATH "%PATH%;C:\Program Files\MongoDB\Server\3.4\bin"
 
 - Create folders for MongoDB on the disk where it was installed:
 	- C:\data\db
@@ -48,15 +49,15 @@ Additional libraries/technologies:
 - Optional:
 	- [Download](https://studio3t.com/download-thank-you/?OS=win64) & Install Studio 3T (MongoDB Management Studio, i.e. GUI for mongoDB):
 
-2. Install packages (this might take several minutes, depending on your hardware):
+#### 2. Install packages (this might take several minutes, depending on your hardware):
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm install'.
 - Option 2: Double click on 'install.bat' in 'flight-control' folder.
 
-3. Run program:
+#### 3. Run program:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm start'.
 - Option 2: Double click on 'run.bat' in 'flight-control' folder.
 
-> "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator, DAL).
+> "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator and DAL).
 		
 > While mongoDB is loaded (mongod) for the first time, you will be asked to "Allow access". Press "OK".
 
