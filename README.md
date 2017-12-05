@@ -1,26 +1,25 @@
 # flight-control
-flight-control is a MEAN full stack application, simulating a workflow of a flight control tower.
-It is built with angular 4, node, express and mongoDB (via mongoose 4), and written with typescript end-to-end.
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/flight-control.gif "flight-control")
 
-The application includes 3 separate projects (combined in a VS Code workspace):
+The application consists of 3 projects, combined in a VS Code workspace:
 1. control-tower (UI Client) - Angular 4
 2. simulator (flights generator) - node.js, express
 3. DAL - node.js, express, mongoose 4
 
-- Communication between UI and Simulator is done via bidirectional socket.
-- Communication between UI/Simulator and DAL is done via HTTP.
-
-- Additional libraries/technologies:
-	- Observables: rxjs
-	- Graphics: SVG (map/planes/routes)
-	- Animation: anime.js
-	- UI design: Bootstrap 3
-	- Settings UI: bootstrap-slider & ngx-ui-switch
-	- Right-click menus: jquery-contextmenu
-	- HTTP communication between simulator and DAL: request-promise
-	- jQuery
-
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/flight-control.gif "flight-control")
+> Communication between UI and Simulator is done via bidirectional socket.
+		
+> Communication between UI/Simulator and DAL is done via HTTP.
+		
+Additional libraries/technologies:
+		
+- Observables: rxjs
+- Graphics: SVG (map/planes/routes)
+- Animation: anime.js
+- UI design: Bootstrap 3
+- Settings UI: bootstrap-slider & ngx-ui-switch
+- Right-click menus: jquery-contextmenu
+- HTTP communication between simulator and DAL: request-promise
+- jQuery
 
 Install & Run Instructions:
 --------------------------
@@ -67,8 +66,8 @@ Install & Run Instructions:
 	- "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator, DAL).
 	- While mongoDB is loaded (mongod) for the first time, you will be asked to "Allow access". Press "OK".
 
-Program Instructions:
---------------------
+Operations:
+-----------
 
 - Settings Panel:
 	- Simulator Switch - Start/Stop generation of new flights.
