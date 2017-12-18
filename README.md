@@ -1,5 +1,5 @@
 # flight-control
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/flight-control.gif "flight-control")
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/flight-control.gif "flight-control")
 
 The application consists of 3 projects, combined in a VS Code workspace:
 1. control-tower (UI Client) - [Angular 4](https://angular.io/)
