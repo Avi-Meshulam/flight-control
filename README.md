@@ -10,7 +10,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 		
 > Communication between UI/Simulator and DAL is done via HTTP.
 		
-Additional libraries/technologies:
+Additional technologies/tools:
 		
 - Observables: [rxjs](http://reactivex.io/documentation/observable.html)
 - Graphics: SVG (map/planes/routes). Tool: [Inkscape](https://inkscape.org/en/)
@@ -53,9 +53,13 @@ Additional libraries/technologies:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm install'.
 - Option 2: Double click on 'install.bat' in 'flight-control' folder.
 
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
+		
 #### 3. Run program:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm start'.
 - Option 2: Double click on 'run.bat' in 'flight-control' folder.
+		
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
 
 > "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator and DAL).
 		
@@ -85,3 +89,5 @@ Additional libraries/technologies:
 #### Map Panel:
 - Right click on a plane image in legs 1-3 (in air arriving flights) to set emergency on/off.
 - Right click a leg (1-9) to close/reopen it.
+
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
