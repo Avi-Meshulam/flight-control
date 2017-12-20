@@ -26,6 +26,10 @@ td {
 	padding-right: 0;
 }
 
+.no-padding-bottom {
+	padding-bottom: 0;
+}
+
 .interactive {
 	cursor: pointer;
 }

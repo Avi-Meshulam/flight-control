@@ -203,6 +203,7 @@ export class SettingsComponent implements AfterViewInit {
 	private static restoreSimulatorSettings(obj: SimulatorSettings): void {
 		SettingsComponent._simulatorIntervalRange.min = obj.intervalRange.min;
 		SettingsComponent._simulatorIntervalRange.max = obj.intervalRange.max;
+		SettingsComponent.applySimulatorSettings();
 	}
 
 	private static applySimulatorSettings(): void {

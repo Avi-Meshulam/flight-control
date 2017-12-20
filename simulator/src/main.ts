@@ -43,7 +43,8 @@ io.on('connection', (socket: SocketIO.Socket) => {
 
 	socket.on('disconnect', () => {
 		console.log('user disconnected\n');
-		subscription.unsubscribe();
+		// subscription.unsubscribe();
+		simulator.stop(subscription);
 	});
 
 	IncomingMessageType.forEach(messageType =>

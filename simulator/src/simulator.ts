@@ -1,4 +1,6 @@
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import { Subscription } from 'rxjs/Subscription';
 import { CONTROL_TOWER } from './constants';
 // import * as data from './data/flights';
 import { arrivals, departures } from './data/flights';
@@ -27,6 +29,9 @@ export class Simulator {
 
 	private _arrivals: Map<string, IArrivingFlight> = new Map<string, IArrivingFlight>();
 	private _departures: Map<string, IDepartingFlight> = new Map<string, IDepartingFlight>();
+	private _arrivalsSubscription: Subscription;
+	private _departuresSubscription: Subscription;
+
 
 	private readonly _intervalRange: Range = { min: DEFAULT_MIN_INTERVAL, max: DEFAULT_MAX_INTERVAL };
 	get intervalRange(): Range {
@@ -42,20 +47,27 @@ export class Simulator {
 
 	getTransmissions(): Observable<Transmission> {
 		return Observable.create(observer => {
-			this.getObservable(DBCollection.Arrivals).subscribe(
+			this._arrivalsSubscription = this.getObservable(DBCollection.Arrivals).subscribe(
 				flight => observer.next(this.createTransmission(
 					ArrivingFlight.createNew(flight as IArrivingFlight), 'Asking permission to enter airport')),
 				err => console.log(err),
 				() => observer.complete()
 			);
 
-			this.getObservable(DBCollection.Departures).subscribe(
+			this._departuresSubscription = this.getObservable(DBCollection.Departures).subscribe(
 				flight => observer.next(this.createTransmission(
 					DepartingFlight.createNew(flight as IDepartingFlight), 'Ready to depart')),
 				err => console.log(err),
 				() => observer.complete()
 			);
 		});
+	}
+
+	stop(subscription?: Subscription): void {
+		this._arrivalsSubscription.unsubscribe();
+		this._departuresSubscription.unsubscribe();
+		if (subscription)
+			subscription.unsubscribe();
 	}
 
 	deleteTransmission(flight: IFlight): void {
@@ -83,31 +95,28 @@ export class Simulator {
 	}
 
 	private getObservable(collection: DBCollection): Observable<IFlight> {
-		return Observable.create(async observer => {
+		return Observable.create(async (observer: Observer<IFlight>) => {
 			await this.initData(collection);
+			let map = collection === DBCollection.Arrivals ? this._arrivals : this._departures;
 
 			let iterate = async () => {
-				let map = collection === DBCollection.Arrivals ? this._arrivals : this._departures;
-
 				for (let [key, value] of map) {
+					if (observer.closed)
+						return;
 					observer.next(value);
 					await Utils.delay(Utils.getRandomInt(this._intervalRange.min, this._intervalRange.max));
 				}
-
-				// continue iterating as long as map contains entries
-				if (map.size > 0) {
-					iterate();
-				}
-				else {
-					console.log(`Starting over ${collection}...\n`);
-					await this.initData(collection, true);
-					iterate();
-				}
-				/* else {
-					observer.complete();
-				} */
 			};
-			iterate();
+				
+			while (!observer.closed) {
+				while (map.size > 0 && !observer.closed) {
+					await iterate();
+				}
+				if (observer.closed)
+					break;
+				console.log(`Starting over ${collection}...\n`);
+				await this.initData(collection, true);
+			}
 		});
 	}
 
