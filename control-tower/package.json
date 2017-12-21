@@ -5,7 +5,7 @@
 	"scripts": {
 		"preinstall": "(cd ../simulator && npm install); && (cd ../dal && npm install);",
 		"postinstall": "copy src\\assets\\scripts\\jquery.js node_modules\\jquery\\dist /Y",
-		"prestart": "(start mongod) && (PING 127.0.0.1 -n 10 >NUL) && (start node ../dal/out/main.js /k) && (PING 127.0.0.1 -n 3 >NUL) && (start node ../simulator/out/main.js /k)",
+		"prestart": "(start mongod) && (PING 127.0.0.1 -n 10 >NUL) && (start node ../dal/out/main.js /k) && (PING 127.0.0.1 -n 5 >NUL) && (start node ../simulator/out/main.js /k)",
 		"start": "ng serve -o"
 	},
 	"// single folder scripts": {
