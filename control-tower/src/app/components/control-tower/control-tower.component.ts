@@ -278,6 +278,15 @@ export class ControlTowerComponent implements AfterViewInit {
 		}
 
 		if (leg.type === LegType.Terminal) {
+			
+			// let pausedFlight = this._terminalLegs.find(leg => leg.isClosed 
+			// 	&& [LegState.Saved, LegState.MarkedForSave].includes(leg.state) 
+			// 	&& Flight.isArrivingFlight(leg.flight));
+			
+			// if (pausedFlight) {
+				// TODO: Move closest paused flight to available leg
+			// }
+
 			let validTerminalLegForArrivals;
 			if (this._legs[LEGS.Arrivals].state === LegState.Occupied)
 				validTerminalLegForArrivals = this.findValidTerminalLegForArrivals();
@@ -498,9 +507,11 @@ export class ControlTowerComponent implements AfterViewInit {
 
 	// Search for the first leg that is available, and that there isn't another plane on the way
 	private findValidTerminalLegForArrivals(): Leg | undefined {
-		return this._terminalLegs.find(leg =>
-			!leg.isClosed
-			&& this.isLegAvailable(leg)
+		return !this._terminalLegs.some(leg => leg.isClosed 
+			&& [LegState.Saved, LegState.MarkedForSave].includes(leg.state)
+			&& Flight.isArrivingFlight(leg.flight)
+		) && this._terminalLegs.find(leg =>
+			this.isLegAvailable(leg)
 			&& !([LegState.MarkedForSave, LegState.Saved].includes(this._legs[LEGS.Departures].state)
 				&& this._legs[LEGS.Departures].flight.legId < leg._id)
 			// TODO: In case of multiple departure legs, replace previous condition with the following:
