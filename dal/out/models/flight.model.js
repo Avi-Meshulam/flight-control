@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const utils = require("../utils");
 var FlightStatus;
 (function (FlightStatus) {
     FlightStatus["OnTime"] = "OnTime";
@@ -19,17 +18,17 @@ exports.flightSchema = new mongoose_1.Schema({
     updatedAt: { type: Date, default: new Date }
 }, { discriminatorKey: 'direction' });
 // Flight Model
-const FlightModel = mongoose_1.model('flight', exports.flightSchema);
-exports.FlightModel = FlightModel;
-// Arriving Flight Model
-const ArrivingFlightModel = FlightModel.discriminator('Arriving', new mongoose_1.Schema({
-    comingFrom: { type: String, required: true }
-}, { _id: false }));
-// Departing Flight Model
-const DepartingFlightModel = FlightModel.discriminator('Departing', new mongoose_1.Schema({
-    departingTo: { type: String, required: true }
-}, { _id: false }));
-exports.flightSchema.statics.assignDiscriminators = function (...docs) {
-    utils.getInnerArray(docs).forEach(flight => utils.assignFlightDiscriminator(flight));
-};
+// const FlightModel = model('flight', flightSchema);
+// // Arriving Flight Model
+// const ArrivingFlightModel = FlightModel.discriminator('Arriving', new Schema({
+// 	comingFrom: { type: String, required: true }
+// }, { _id: false }));
+// // Departing Flight Model
+// const DepartingFlightModel = FlightModel.discriminator('Departing', new Schema({
+// 	departingTo: { type: String, required: true }
+// }, { _id: false }));
+// flightSchema.statics.assignDiscriminators = function (...docs: object[]): void {
+// 	utils.getInnerArray(docs).forEach(flight => utils.assignFlightDiscriminator(flight));
+// };
+// export { FlightModel }; 
 //# sourceMappingURL=flight.model.js.map

@@ -20,20 +20,20 @@ export const flightSchema = new Schema({
 }, { discriminatorKey: 'direction' });
 
 // Flight Model
-const FlightModel = model('flight', flightSchema);
+// const FlightModel = model('flight', flightSchema);
 
-// Arriving Flight Model
-const ArrivingFlightModel = FlightModel.discriminator('Arriving', new Schema({
-	comingFrom: { type: String, required: true }
-}, { _id: false }));
+// // Arriving Flight Model
+// const ArrivingFlightModel = FlightModel.discriminator('Arriving', new Schema({
+// 	comingFrom: { type: String, required: true }
+// }, { _id: false }));
 
-// Departing Flight Model
-const DepartingFlightModel = FlightModel.discriminator('Departing', new Schema({
-	departingTo: { type: String, required: true }
-}, { _id: false }));
+// // Departing Flight Model
+// const DepartingFlightModel = FlightModel.discriminator('Departing', new Schema({
+// 	departingTo: { type: String, required: true }
+// }, { _id: false }));
 
-flightSchema.statics.assignDiscriminators = function (...docs: object[]): void {
-	utils.getInnerArray(docs).forEach(flight => utils.assignFlightDiscriminator(flight));
-};
+// flightSchema.statics.assignDiscriminators = function (...docs: object[]): void {
+// 	utils.getInnerArray(docs).forEach(flight => utils.assignFlightDiscriminator(flight));
+// };
 
-export { FlightModel };
+// export { FlightModel };

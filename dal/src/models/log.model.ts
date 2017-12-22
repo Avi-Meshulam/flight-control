@@ -4,15 +4,15 @@ import { flightLogSchema } from './flightLog.model';
 import { legSchema } from './leg.model';
 
 // Flight Log Schema
-const logFlightLogSchema = new Schema({
+const logFlightSchema = new Schema({
 	flight: { type: new Schema(flightLogSchema.obj, { discriminatorKey: 'direction', _id: false }) }
 }, { _id: false });
 
-(<any>logFlightLogSchema.path('flight')).discriminator('Arriving', new Schema({
+(<any>logFlightSchema.path('flight')).discriminator('Arriving', new Schema({
 	comingFrom: { type: String, required: true }
 }, { _id: false }));
 
-(<any>logFlightLogSchema.path('flight')).discriminator('Departing', new Schema({
+(<any>logFlightSchema.path('flight')).discriminator('Departing', new Schema({
 	departingTo: { type: String, required: true }
 }, { _id: false }));
 
@@ -25,8 +25,8 @@ const logSchema = new Schema({
 const LogModel = model('log', logSchema, 'log');
 
 // Flight Log Model
-const LogFlightLogModel = LogModel.discriminator('Flight', new Schema({
-	flight: { type: logFlightLogSchema }
+const LogFlightModel = LogModel.discriminator('Flight', new Schema({
+	flight: { type: logFlightSchema }
 }));
 
 // Leg Log Model

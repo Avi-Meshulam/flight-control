@@ -48,8 +48,10 @@ legSchema.path('flight').unique(true);
 }, { _id: false }));
 
 // Leg Model
-export const LegModel = model('leg', legSchema);
+const LegModel = model('leg', legSchema);
 
 legSchema.statics.assignDiscriminators = function (...docs: object[]): void {
 	utils.getInnerArray(docs).forEach(leg => utils.assignFlightDiscriminator(leg.flight));
 };
+
+export { LegModel };

@@ -5,13 +5,13 @@ const utils = require("../utils");
 const flightLog_model_1 = require("./flightLog.model");
 const leg_model_1 = require("./leg.model");
 // Flight Log Schema
-const logFlightLogSchema = new mongoose_1.Schema({
+const logFlightSchema = new mongoose_1.Schema({
     flight: { type: new mongoose_1.Schema(flightLog_model_1.flightLogSchema.obj, { discriminatorKey: 'direction', _id: false }) }
 }, { _id: false });
-logFlightLogSchema.path('flight').discriminator('Arriving', new mongoose_1.Schema({
+logFlightSchema.path('flight').discriminator('Arriving', new mongoose_1.Schema({
     comingFrom: { type: String, required: true }
 }, { _id: false }));
-logFlightLogSchema.path('flight').discriminator('Departing', new mongoose_1.Schema({
+logFlightSchema.path('flight').discriminator('Departing', new mongoose_1.Schema({
     departingTo: { type: String, required: true }
 }, { _id: false }));
 // Log schema
@@ -22,8 +22,8 @@ const logSchema = new mongoose_1.Schema({
 const LogModel = mongoose_1.model('log', logSchema, 'log');
 exports.LogModel = LogModel;
 // Flight Log Model
-const LogFlightLogModel = LogModel.discriminator('Flight', new mongoose_1.Schema({
-    flight: { type: logFlightLogSchema }
+const LogFlightModel = LogModel.discriminator('Flight', new mongoose_1.Schema({
+    flight: { type: logFlightSchema }
 }));
 // Leg Log Model
 const LogLegModel = LogModel.discriminator('Leg', new mongoose_1.Schema({

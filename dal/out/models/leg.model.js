@@ -43,7 +43,8 @@ exports.legSchema.path('flight').discriminator('Departing', new mongoose_1.Schem
     departingTo: { type: String, required: true }
 }, { _id: false }));
 // Leg Model
-exports.LegModel = mongoose_1.model('leg', exports.legSchema);
+const LegModel = mongoose_1.model('leg', exports.legSchema);
+exports.LegModel = LegModel;
 exports.legSchema.statics.assignDiscriminators = function (...docs) {
     utils.getInnerArray(docs).forEach(leg => utils.assignFlightDiscriminator(leg.flight));
 };

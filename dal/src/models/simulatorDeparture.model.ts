@@ -6,4 +6,4 @@ const simulatorDepartureSchema = new Schema(flightSchema.obj);
 simulatorDepartureSchema.path('flightCode').unique(true);
 simulatorDepartureSchema.add({departingTo: { type: String, required: true }});
 
-export const SimulatorDepartureModel = model('simulatorDeparture', simulatorDepartureSchema, 'simulatorDepartures');
+export const SimulatorDepartureModel = model('simulatorDeparture', simulatorDepartureSchema);

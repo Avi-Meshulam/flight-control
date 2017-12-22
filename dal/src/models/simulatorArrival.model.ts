@@ -6,5 +6,5 @@ const simulatorArrivalSchema = new Schema(flightSchema.obj);
 simulatorArrivalSchema.path('flightCode').unique(true);
 simulatorArrivalSchema.add({comingFrom: { type: String, required: true }});
 
-export const SimulatorArrivalModel = model('simulatorArrival', simulatorArrivalSchema, 'simulatorArrivals');
+export const SimulatorArrivalModel = model('simulatorArrival', simulatorArrivalSchema);
 
