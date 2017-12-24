@@ -123,14 +123,14 @@ Close/Open Leg
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/flightLog.png "flightLog Collection")
 		
 ### Leg States
-| State             | Description  
-| ------------------| ------------- 
-| Unoccupied        | 
-| MoveDirectionSent | A flight was directed to enter leg, but has not yet confirmed.
-| MoveConfirmed     | A flight confirmed directions to enter leg.
-| MarkedForSave     | Leg should be saved for a flight, once that flight confirms directions.
-| Saved             | Leg is saved for a flight that confirmed directions.
-| Occupied          | Leg is occupied by a flight.
+| State               | Description  
+| ------------------- | -----------
+| Unoccupied          | 
+| Move Direction Sent | A flight was directed to enter leg, but has not yet confirmed.
+| Move Confirmed      | A flight confirmed directions to enter leg.
+| Marked For Save     | Leg should be saved for a flight, once that flight confirms directions.
+| Saved               | Leg is saved for a flight that confirmed directions.
+| Occupied            | Leg is occupied by a flight.
 		
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
 		
