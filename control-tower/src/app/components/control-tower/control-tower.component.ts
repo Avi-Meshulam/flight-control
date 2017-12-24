@@ -223,7 +223,8 @@ export class ControlTowerComponent implements AfterViewInit {
 	//#region 'Event' Handlers Helper Methods
 	private flight_isEmergencyChanged(flight: Flight): void {
 		this.setEmergencyStatusByFlight(flight);
-		if (!flight.legId) {
+		// Handle the case of which the flight is in Arrivals/Emergencies queue
+		if (!flight.legId && this._legs[LEGS.Enter].flight !== flight) {
 			if (flight.isEmergency) {
 				if (this.isLegAvailable(this._legs[LEGS.Enter]))
 					this.moveFlightFromQueue(QueueType.Arrivals, this._legs[LEGS.Enter], flight);
