@@ -104,8 +104,8 @@ Features/Technologies/Tools:
 		
 	#### Close/Open Leg
 	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
-
-## DB structure:
+		
+## DB structure
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Diagram.png "DB Schema")
 		
 | Collection          | Description   
@@ -118,6 +118,10 @@ Features/Technologies/Tools:
 | simulatorarrivals   | Simulator's arrivals storage, initiated from a data file in simulator project. A flight that enters airport or added to arrivals queue is deleted from this collection. When the collection is empty, it is refilled again from the project's data file.
 | simulatordepartures | Same as simulator's arrivals storage, but for departures.
 		
+> MONGODB_URI=mongodb://localhost:27017/flight-control
+> PORT=3000
+> Routes pattern: MONGODB_URI/{collection name}
+
 #### 'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction':
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
 		
