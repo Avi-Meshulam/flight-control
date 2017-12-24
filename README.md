@@ -39,7 +39,7 @@ Features/Technologies/Tools:
 	4. click "OK"
 	5. click "OK" again
 		
-	> Alternativly you can run the following SETX command in cmd.exe, **but be aware(!) that SETX truncates the stored path to 1024 bytes, potentially corrupting your PATH environment variable**:
+	> Alternativly you can run the following SETX command in cmd.exe, **but be aware(!) - SETX truncates the stored path to 1024 bytes, potentially corrupting your PATH environment variable**:
 		
 	> SETX /m PATH "%PATH%;C:\Program Files\MongoDB\Server\3.4\bin"
 
@@ -48,22 +48,22 @@ Features/Technologies/Tools:
 	- C:\data\log
 
 - Optional:
-	- [Download](https://studio3t.com/download-thank-you/?OS=win64) & Install Studio 3T (MongoDB Management Studio, i.e. GUI for mongoDB):
+	- Download  & Install GUI application for mongoDB, e.g. [Studio 3T](https://studio3t.com/download-thank-you/?OS=win64)
 
 ### 2. Install packages (this might take several minutes, depending on your hardware):
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm install'.
 - Option 2: Double click on 'install.bat' in 'flight-control' folder.
 		
-Easy Install
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
+	#### Easy Installation
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
 		
 ### 3. Run program:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm start'.
 - Option 2: Double click on 'run.bat' in 'flight-control' folder.
 
-Easy Startup		
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
-
+	#### Easy Startup
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
+		
 > "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator and DAL).
 		
 > While mongoDB is loaded (mongod) for the first time, you will be asked to "Allow access". Press "OK".
@@ -75,12 +75,14 @@ Simulating radio transmissions between control tower and flights
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Communication.gif "Communication")
 
 ### Settings Panel
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Settings.png "Settings Panel")
+		
 - Simulator Switch - Start/Stop generation of new flights.
 - Speed Percentage - Speed range as percentage from max. speed (zero delay time)
 		
 	> Planes speed is not constant. It's chosen randomly for each move between airport legs.
 		
-	> The bigger the difference between min and max speed, the bigger the chance of collisions in 'Risky' mode (see below).
+	> The bigger the difference between min and max speed, the bigger the chance of collisions in 'Risky' safety mode (see below).
 		
 	> Recommended values: min: ~92%, max: ~98%.
 - Safety Mode:
@@ -92,16 +94,16 @@ Simulating radio transmissions between control tower and flights
 
 ### Queues Panel
 - Right click on a flight code in "Arrivals" or "Emergencies" queues to set emergency on/off.
+		
+	#### Set Emergency On/Off
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
 
 ### Map Panel
 - Right click on a plane image in legs 1-3 (in air arriving flights) to set emergency on/off.
 - Right click a leg (1-9) to close/reopen it.
 		
-Set Emergency On/Off
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
-
-Close/Open Leg
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
+	#### Close/Open Leg
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
 
 ## DB structure:
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Diagram.png "DB Schema")
@@ -116,22 +118,23 @@ Close/Open Leg
 | simulatorarrivals   | Simulator's arrivals storage, initiated from a data file in simulator project. A flight that enters airport or added to arrivals queue is deleted from this collection. When the collection is empty, it is refilled again from the project's data file.
 | simulatordepartures | Same as simulator's arrivals storage, but for departures.
 		
-'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction'
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
+#### 'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction':
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
 		
-'flightLog' collection hosts both arriving and departing flights, discriminated by key named 'direction'.
+#### 'flightLog' collection hosts both arriving and departing flights, discriminated by key named 'direction':
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/flightLog.png "flightLog Collection")
 		
 ### Leg States
-| State             | Description  
-| ------------------| ------------- 
-| Unoccupied        | 
-| MoveDirectionSent | A flight was directed to enter leg, but has not yet confirmed.
-| MoveConfirmed     | A flight confirmed directions to enter leg.
-| MarkedForSave     | Leg should be saved for a flight, once that flight confirms directions.
-| Saved             | Leg is saved for a flight that confirmed directions.
-| Occupied          | Leg is occupied by a flight.
+| State               | Description  
+| ------------------- | -----------
+| Unoccupied          | 
+| Move Direction Sent | A flight was directed to enter leg, but has not yet confirmed.
+| Move Confirmed      | A flight confirmed directions to enter leg.
+| Marked For Save     | Leg should be saved for a flight, once that flight confirms directions.
+| Saved               | Leg is saved for a flight that confirmed directions.
+| Occupied            | Leg is occupied by a flight.
+		
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
 		
 ### Flight Status
 | Status   | Description
