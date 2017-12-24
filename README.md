@@ -71,14 +71,14 @@ Features/Technologies/Tools:
 ## User Interface
 
 ### Communication Panel
-Simulating radio transmissions between control tower and flights
+#### Simulating radio transmissions between control tower and flights
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Communication.gif "Communication")
 
 ### Settings Panel
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Settings.png "Settings Panel")
 		
 - Simulator Switch - Start/Stop generation of new flights.
-- Speed Percentage - Speed range as percentage from max. speed (zero delay time)
+- Speed Range - Speed range as percentage out of max. speed (zero delay time)
 		
 	> Planes speed is not constant. It's chosen randomly for each move between airport legs.
 		
