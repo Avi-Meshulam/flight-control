@@ -54,16 +54,16 @@ Features/Technologies/Tools:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm install'.
 - Option 2: Double click on 'install.bat' in 'flight-control' folder.
 		
-Easy Install
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
+	#### Easy Install
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
 		
 ### 3. Run program:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm start'.
 - Option 2: Double click on 'run.bat' in 'flight-control' folder.
 
-Easy Startup		
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
-
+	#### Easy Startup
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
+		
 > "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator and DAL).
 		
 > While mongoDB is loaded (mongod) for the first time, you will be asked to "Allow access". Press "OK".
@@ -92,16 +92,16 @@ Simulating radio transmissions between control tower and flights
 
 ### Queues Panel
 - Right click on a flight code in "Arrivals" or "Emergencies" queues to set emergency on/off.
+		
+	#### Set Emergency On/Off
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
 
 ### Map Panel
 - Right click on a plane image in legs 1-3 (in air arriving flights) to set emergency on/off.
 - Right click a leg (1-9) to close/reopen it.
 		
-Set Emergency On/Off
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
-
-Close/Open Leg
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
+	#### Close/Open Leg
+	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
 
 ## DB structure:
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Diagram.png "DB Schema")
@@ -116,10 +116,10 @@ Close/Open Leg
 | simulatorarrivals   | Simulator's arrivals storage, initiated from a data file in simulator project. A flight that enters airport or added to arrivals queue is deleted from this collection. When the collection is empty, it is refilled again from the project's data file.
 | simulatordepartures | Same as simulator's arrivals storage, but for departures.
 		
-'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction'
+#### 'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction'
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
 		
-'flightLog' collection hosts both arriving and departing flights, discriminated by key named 'direction'.
+#### 'flightLog' collection hosts both arriving and departing flights, discriminated by key named 'direction'.
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/flightLog.png "flightLog Collection")
 		
 ### Leg States
