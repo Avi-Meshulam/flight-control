@@ -119,9 +119,11 @@ Features/Technologies/Tools:
 | simulatordepartures | Same as simulator's arrivals storage, but for departures.
 		
 > MONGODB_URI=mongodb://localhost:27017/flight-control
+		
 > PORT=3000
+		
 > Routes pattern: MONGODB_URI/{collection name}
-
+		
 #### 'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction':
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
 		
