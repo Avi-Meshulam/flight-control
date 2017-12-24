@@ -117,7 +117,6 @@ Close/Open Leg
 | simulatordepartures | Same as simulator's arrivals storage, but for departures.
 		
 'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction'
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
 		
 'flightLog' collection hosts both arriving and departing flights, discriminated by key named 'direction'.
@@ -132,6 +131,8 @@ Close/Open Leg
 | MarkedForSave     | Leg should be saved for a flight, once that flight confirms directions.
 | Saved             | Leg is saved for a flight that confirmed directions.
 | Occupied          | Leg is occupied by a flight.
+		
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
 		
 ### Flight Status
 | Status   | Description
