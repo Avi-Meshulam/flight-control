@@ -10,7 +10,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 		
 > Communication between UI/Simulator and DAL is done via HTTP.
 		
-Additional technologies/tools:
+Features/Technologies/Tools:
 		
 - Observables: [rxjs](http://reactivex.io/documentation/observable.html)
 - Graphics: SVG (map/planes/routes). Tool: [Inkscape](https://inkscape.org/en/)
@@ -19,11 +19,12 @@ Additional technologies/tools:
 - Settings UI: [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) & [ngx-ui-switch](https://github.com/webcat12345/ngx-ui-switch)
 - Right-click menus: [jquery-contextmenu](https://github.com/swisnl/jQuery-contextMenu)
 - HTTP communication between simulator and DAL: [request-promise](https://github.com/request/request-promise)
+- mongoose discriminators on both collection level and field level
 - [jQuery](https://jquery.com/)
 
 ## Install & Run Instructions:
 
-#### 1. Install software:
+### 1. Install software:
 - [Download](https://nodejs.org/en/) & Install Node.js, LTS release
 - [Download](https://www.mongodb.com/download-center?jmp=nav#community) & Install MongoDB
 - Add MongoDB bin folder to user or system path (instructions are for Windows):
@@ -49,25 +50,31 @@ Additional technologies/tools:
 - Optional:
 	- [Download](https://studio3t.com/download-thank-you/?OS=win64) & Install Studio 3T (MongoDB Management Studio, i.e. GUI for mongoDB):
 
-#### 2. Install packages (this might take several minutes, depending on your hardware):
+### 2. Install packages (this might take several minutes, depending on your hardware):
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm install'.
 - Option 2: Double click on 'install.bat' in 'flight-control' folder.
-
+		
+Easy Install
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
 		
-#### 3. Run program:
+### 3. Run program:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm start'.
 - Option 2: Double click on 'run.bat' in 'flight-control' folder.
-		
+
+Easy Startup		
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
 
 > "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator and DAL).
 		
 > While mongoDB is loaded (mongod) for the first time, you will be asked to "Allow access". Press "OK".
 
-## Operations:
+## User Interface
 
-#### Settings Panel:
+### Communication Panel
+Simulating radio transmissions between control tower and flights
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Communication.gif "Communication")
+
+### Settings Panel
 - Simulator Switch - Start/Stop generation of new flights.
 - Speed Percentage - Speed range as percentage from max. speed (zero delay time)
 		
@@ -83,11 +90,53 @@ Additional technologies/tools:
 - Radio response time - Delay in response in communication between control-tower & planes.
 - Simulator Interval Range - Interval range for generating new flights.
 
-#### Queues Panel:
+### Queues Panel
 - Right click on a flight code in "Arrivals" or "Emergencies" queues to set emergency on/off.
 
-#### Map Panel:
+### Map Panel
 - Right click on a plane image in legs 1-3 (in air arriving flights) to set emergency on/off.
 - Right click a leg (1-9) to close/reopen it.
+		
+Set Emergency On/Off
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
 
+Close/Open Leg
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
+
+## DB structure:
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Diagram.png "DB Schema")
+		
+| Collection          | Description   
+| ------------------- | ------------- 
+| arrivals            | Arrivals queue. Contains all flights that requested to start landing process.
+| departues           | Departures queue. Contains all flights that requested to start departing process.
+| legs                | Current state of airport legs, including leg's id/number, type, state, open/close status, and occuping flight, if any.
+| flightLog           | One record for for every change in flight data: flight's status, emergency state, location (legId).
+| settings            | Application's settings, as displayed in settings panel.
+| simulatorarrivals   | Simulator's arrivals storage, initiated from a data file in simulator project. A flight that enters airport or added to arrivals queue is deleted from this collection. When the collection is empty, it is refilled again from the project's data file.
+| simulatordepartures | Same as simulator's arrivals storage, but for departures.
+		
+'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction'
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
+		
+'flightLog' collection hosts both arriving and departing flights, discriminated by key named 'direction'.
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/flightLog.png "flightLog Collection")
+		
+### Leg States
+| State             | Description  
+| ------------------| ------------- 
+| Unoccupied        | 
+| MoveDirectionSent | A flight was directed to enter leg, but has not yet confirmed.
+| MoveConfirmed     | A flight confirmed directions to enter leg.
+| MarkedForSave     | Leg should be saved for a flight, once that flight confirms directions.
+| Saved             | Leg is saved for a flight that confirmed directions.
+| Occupied          | Leg is occupied by a flight.
+		
+### Flight Status
+| Status   | Description
+| -------- | -----------
+| OnTime   | Flight is on schedule (default)
+| Delay    | Flight is behind schedule (currently not in use)
+| Departed | Flight left airport's air space
+| Landed   | Flight entered terminal and is no longer under tower's supervision
