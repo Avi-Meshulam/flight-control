@@ -10,6 +10,20 @@ The application consists of 3 projects, combined in a VS Code workspace:
 		
 > Communication between UI/Simulator and DAL is done via HTTP.
 		
+## Overview
++ When the user switches on the simulator, the simulator starts emitting flight transmissions. Each transmission includes a request for landing/departing and some flight data (flight code, airline, destination etc.).
+
++ The client (tower) listens to those requests and starts handling them. If there’s an available relevant leg (terminal leg for departures flight and entering leg for arrivals), the tower immediately directs the flight to enter the that leg. Otherwise, it adds the flight to a waiting queue, until its turn arrives. Either way, the simulator keeps sending the same request, until getting a response from the tower. When it receives the response, the simulator deletes the flight from its lists and turns further handling to tower.
+
++ When a flight is in one of the airport's legs, it waits for directions to move to the next leg. The flight signifies the tower upon receiving directions, and upon reaching the target leg. Then, it waits again until leaving the airport. 
+Flights precedence is determined based on waiting time. The longer a flight waits, the higher priority it gets. If two flights has the same waiting time, priority is given to flights in landing leg (leg no. 3), then to departing flights and otherwise to an arbitrary flight.
+
++ If a flight announces an emergency state, it gets the highest priority (emergency is relevant to in-air arriving flights, i.e. out-of-airport arriving flights or flights in legs 1-3). If there is more than one arriving flight in emergency, flights are pushed into an emergency queue. When a flight in emergency lands, its emergency status is canceled.
+
++ The client/tower can close a leg, and if possible, continue moving flights. Currently, it is not possible to move flights backwards. It might be relevant for arriving flights, moving towards a terminal leg, while that leg is closed. Technically, it's not a problem to add backwards logic, but it implies some changes in terms of animation.
+
++ Both client and simulator save their data in DB and therefore can always recover from unexpected shutdown. If the database is not reachable, the tower stops handling requests, since it must constantly update the DB in order to be able to recover (technically, it is possible to temporarily save the data to a local file and then sync with the database). When the simulator exhausts its data, it refills its lists with the same data again, so it keeps transmitting infinitivally.
+		
 Features/Technologies/Tools:
 		
 - Observables: [rxjs](http://reactivex.io/documentation/observable.html)
