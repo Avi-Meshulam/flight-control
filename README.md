@@ -25,17 +25,17 @@ The application consists of 3 projects, combined in a VS Code workspace:
 
 + Both client and simulator save a backup of their data in DB and therefore can always recover from unexpected shutdown. The tower saves the state of the airport-legs (avalibility and occupying flight, if any), the flights-queues (arriving/departing/emergency) and the user settings. The simulator saves flights data, and deletes one record for every acknowledgement response from tower. If the database is not reachable, the tower stops handling requests, since it must constantly update its data in order to be able to recover (technically, it is possible to temporarily save the data to a local file and then sync with the database). When the simulator exhausts its data, it refills its lists with the same data again, so it can keep transmitting infinitivally.
 		
-Features/Technologies/Tools:
+## Features/Technologies/Tools
 		
-- Observables: [rxjs](http://reactivex.io/documentation/observable.html)
-- Graphics: SVG (map/planes/routes). Tool: [Inkscape](https://inkscape.org/en/)
-- Animation: [anime.js](https://github.com/juliangarnier/anime)
-- UI design: [Bootstrap 3](https://getbootstrap.com/docs/3.3/)
-- Settings UI: [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) & [ngx-ui-switch](https://github.com/webcat12345/ngx-ui-switch)
-- Right-click menus: [jquery-contextmenu](https://github.com/swisnl/jQuery-contextMenu)
-- HTTP communication between simulator and DAL: [request-promise](https://github.com/request/request-promise)
-- mongoose discriminators on both collection level and field level
-- [jQuery](https://jquery.com/)
+- Observables/Subjects: [rxjs](http://reactivex.io/documentation/observable.html).
+- Graphics: SVG (map/planes/routes). Tool: [Inkscape](https://inkscape.org/en/).
+- Animation: [anime.js](https://github.com/juliangarnier/anime).
+- UI design: [Bootstrap 3](https://getbootstrap.com/docs/3.3/).
+- Settings UI: [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) & [ngx-ui-switch](https://github.com/webcat12345/ngx-ui-switch).
+- Right-click menus: [jquery-contextmenu](https://github.com/swisnl/jQuery-contextMenu).
+- HTTP communication between simulator and DAL: [request-promise](https://github.com/request/request-promise).
+- mongoose discriminators on both collection level and field level.
+- [jQuery](https://jquery.com/).
 
 ## Install & Run Instructions:
 
