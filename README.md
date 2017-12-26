@@ -11,7 +11,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 > Communication between UI/Simulator and DAL is done via HTTP.
 		
 ## Logic Overview
-+ When the user switches on the simulator, the simulator starts emitting flight transmissions. Each transmission includes a request (landing/departing) and data (airline, flight-code, destination and so forth).
++ When the user switches the simulator to its "ON" state, the simulator starts emitting flight transmissions. Each transmission includes a request (landing/departing) and data (airline, flight-code, destination and so forth).
 
 + The client (tower) listens to flights transmissions and processes them. If there’s an available relevant leg (terminal leg for departures and entering leg for arrivals), the tower immediately directs the flight to enter that leg. Otherwise, it adds the flight to a waiting queue, until its turn arrives. Either way, the simulator keeps sending the same flight transmission, until getting a response from the tower. When it receives the response, the simulator deletes the flight from its lists and hands responsibility to tower.
 
