@@ -11,11 +11,11 @@ The application consists of 3 projects, combined in a VS Code workspace:
 > Communication between UI/Simulator and DAL is done via HTTP.
 		
 ## Logic Overview
-+ When the user switches on the simulator, the simulator starts emitting transmissions. Each transmission includes a request for landing/departing and some flight data (flight-code, airline, destination etc.).
++ When the user switches on the simulator, the simulator starts emitting flight transmissions. Each transmission includes a request (landing/departing) and data (airline, flight-code, destination and so forth).
 
-+ The client (tower) listens to those requests and starts handling them. If there’s an available relevant leg (terminal leg for departures and entering leg for arrivals), the tower immediately directs the flight to enter that leg. Otherwise, it adds the flight to a waiting queue, until its turn arrives. Either way, the simulator keeps sending the same request, until getting a response from the tower. When it receives the response, the simulator deletes the flight from its lists and turns further handling to tower.
++ The client (tower) listens to flights transmissions and processes them. If there’s an available relevant leg (terminal leg for departures and entering leg for arrivals), the tower immediately directs the flight to enter that leg. Otherwise, it adds the flight to a waiting queue, until its turn arrives. Either way, the simulator keeps sending the same flight transmission, until getting a response from the tower. When it receives the response, the simulator deletes the flight from its lists and hands responsibility to tower.
 
-+ When a flight is in one of the airport's legs, it waits for directions to move on to the next leg. The flight signifies the tower upon receiving directions, and upon reaching the target leg. Then, it waits again until leaving the airport. 
++ When a flight is in one of airport's legs, it waits for directions to move on to the next leg. The flight signifies the tower upon receiving directions, and upon reaching the target leg. Then, it waits again until leaving the airport. 
 
 + Flights precedence is determined based on waiting time. The longer a flight waits, the higher priority it gets. Exceptions apply for flights in emergency and for flights moving from/to terminal legs, in order to avoid possible collisions, due to changes in planes speed. If two flights wait for the same time, priority is given first to flights in landing leg (leg no. 3), and then to departing flights.
 
