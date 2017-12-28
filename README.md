@@ -85,6 +85,10 @@ The application consists of 3 projects, combined in a VS Code workspace:
 
 ## User Interface
 
+### Flight Data
+#### Interactive flight data triggered by mouse hovering
+![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/FlightData.gif "Flight Data")
+
 ### Communication Panel
 #### Simulating radio transmissions between control tower and flights
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Communication.gif "Communication")
