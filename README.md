@@ -11,7 +11,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 > Communication between UI/Simulator and DAL is done via HTTP.
 		
 ## Logic Overview
-+ When the user switches on the simulator, the simulator starts emitting flight transmissions. Each transmission includes a request (landing/departing) and data (airline, flight-code, destination and so forth).
++ When the user switches the simulator to its "ON" state, the simulator starts emitting flight transmissions. Each transmission includes a request (landing/departing) and data (airline, flight-code, destination and so forth).
 
 + The client (tower) listens to flights transmissions and processes them. If there’s an available relevant leg (terminal leg for departures and entering leg for arrivals), the tower immediately directs the flight to enter that leg. Otherwise, it adds the flight to a waiting queue, until its turn arrives. Either way, the simulator keeps sending the same flight transmission, until getting a response from the tower. When it receives the response, the simulator deletes the flight from its lists and hands responsibility to tower.
 
@@ -21,7 +21,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 
 + If a flight announces an emergency state, it gets the highest priority (emergency is relevant to in-air arriving flights, i.e. out-of-airport arriving flights or flights in legs 1-3). If there is more than one arriving flight in emergency, flights are pushed into an emergency queue. When a flight in emergency lands, its emergency status is set off.
 
-+ The client/tower can close a leg, and if possible, continue moving flights. Currently, it is not possible to move flights backwards. It might be relevant for arriving flights, moving towards a terminal leg, while that leg is closed. Technically, it's not a problem to add backwards logic, but it implies some changes in terms of animation.
++ The client/tower can close a leg, and if possible, continue moving flights. Currently, it is not possible to move flights backwards. It might be relevant for arriving flights, moving towards a terminal leg, while that leg is closed. Technically, it's easy to add backward movement logic, but it requires some work in terms of animation.
 
 + Both client and simulator save a backup of their data in DB and therefore can always recover from unexpected shutdown. The tower saves the state of the airport-legs (avalibility and occupying flight, if any), the flights-queues (arriving/departing/emergency) and the user settings. The simulator saves flights data, and deletes one record for every request acknowledged by tower. If the database is not reachable, the tower stops handling requests, since it must constantly update its data in order to be able to recover (technically, it is possible to temporarily save the data to a local file and then sync with the database). When the simulator exhausts its data, it refills its lists with the same data again, so it can keep transmitting infinitivally.
 		
