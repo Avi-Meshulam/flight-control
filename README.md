@@ -132,7 +132,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 | arrivals            | Arrivals queue. Contains all flights that requested to start landing process.
 | departues           | Departures queue. Contains all flights that requested to start departing process.
 | legs                | Current state of airport legs, including leg's id/number, type, state, open/close status, and occuping flight, if any.
-| flightLog           | One record for for every change in flight data: flight's status, emergency state, location (legId).
+| flightLog           | One record for every change in flight data: flight's status, emergency state, location (legId).
 | settings            | Application's settings, as displayed in settings panel.
 | simulatorarrivals   | Simulator's arrivals storage, initiated from a data file in simulator project. A flight that enters airport or added to arrivals queue is deleted from this collection. When the collection is empty, it is refilled again from the project's data file.
 | simulatordepartures | Same as simulator's arrivals storage, but for departures.
