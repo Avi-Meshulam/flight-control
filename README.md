@@ -15,7 +15,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 
 + The client (tower) listens to flights transmissions and processes them. If there’s an available relevant leg (terminal leg for departures and entering leg for arrivals), the tower immediately directs the flight to enter that leg. Otherwise, it adds the flight to a waiting queue, until its turn arrives. Either way, the simulator keeps sending the same flight transmission, until getting a response from the tower. When it receives the response, the simulator deletes the flight from its lists and hands responsibility to tower.
 
-+ When a flight is in one of airport's legs, it waits for directions to move on to the next leg. The flight signifies the tower upon receiving directions, and upon reaching the target leg. Then, it waits again until leaving the airport. 
++ When a flight is in one of the airport's legs, it waits for directions to move on to the next leg. The flight signifies the tower upon receiving directions, and upon reaching the target leg. Then, it waits again until leaving the airport. 
 
 + Flights precedence is determined based on waiting time. The longer a flight waits, the higher priority it gets. Exceptions apply for flights in emergency and for flights moving from/to terminal legs, in order to avoid possible collisions, due to changes in planes speed. If two flights wait for the same time, priority is given first to flights in landing leg (leg no. 3), and then to departing flights.
 
@@ -132,7 +132,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 | arrivals            | Arrivals queue. Contains all flights that requested to start landing process.
 | departues           | Departures queue. Contains all flights that requested to start departing process.
 | legs                | Current state of airport legs, including leg's id/number, type, state, open/close status, and occuping flight, if any.
-| flightLog           | One record for for every change in flight data: flight's status, emergency state, location (legId).
+| flightLog           | One record for every change in flight data: flight's status, emergency state, location (legId).
 | settings            | Application's settings, as displayed in settings panel.
 | simulatorarrivals   | Simulator's arrivals storage, initiated from a data file in simulator project. A flight that enters airport or added to arrivals queue is deleted from this collection. When the collection is empty, it is refilled again from the project's data file.
 | simulatordepartures | Same as simulator's arrivals storage, but for departures.
