@@ -80,12 +80,12 @@ export class Simulator {
 				.catch(err => console.error(err));
 		else
 			// if (this._departures.has(flight.flightCode))
-				DataService.delete(DBCollection.Departures, { flightCode: flight.flightCode })
-					.then(() => {
-						this._departures.delete(flight.flightCode);
-						// console.error(`flight ${flight.flightCode} deleted. departures size: ${this._departures.size}.`);
-					})
-					.catch(err => console.error(err));
+			DataService.delete(DBCollection.Departures, { flightCode: flight.flightCode })
+				.then(() => {
+					this._departures.delete(flight.flightCode);
+					// console.error(`flight ${flight.flightCode} deleted. departures size: ${this._departures.size}.`);
+				})
+				.catch(err => console.error(err));
 	}
 
 	applySettings(obj: Settings): void {
@@ -107,7 +107,7 @@ export class Simulator {
 					await Utils.delay(Utils.getRandomInt(this._intervalRange.min, this._intervalRange.max));
 				}
 			};
-				
+
 			while (!observer.closed) {
 				while (map.size > 0 && !observer.closed) {
 					await iterate();

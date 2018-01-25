@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 
-export class ObservableArgs {
-	static readonly Empty: ObservableArgs;
+export class EventArgs {
+	static readonly Empty: EventArgs;
 }
 
-export class PropertyChangedObservableArgs extends ObservableArgs {
+export class PropertyChangedEventArgs extends EventArgs {
 	constructor(
 		public readonly propertyName: string,
 		public readonly oldValue?: any
@@ -14,5 +14,5 @@ export class PropertyChangedObservableArgs extends ObservableArgs {
 }
 
 export interface INotifyPropertyChanged {
-	propertyChanged: Observable<PropertyChangedObservableArgs>;
+	propertyChanged: Observable<PropertyChangedEventArgs>;
 }

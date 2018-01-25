@@ -1,24 +1,23 @@
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
 import { SettingsComponent } from '../components/control-tower/settings/settings.component';
 import { ReplyCode, Transmission } from '../models/transmission';
 import { Animation, IAnimationStory } from '../shared/animation';
 import { CONTROL_TOWER, LEGS } from '../shared/constants';
-import { INotifyPropertyChanged, PropertyChangedObservableArgs } from '../shared/events';
+import { INotifyPropertyChanged, PropertyChangedEventArgs } from '../shared/events';
 import Utils from '../shared/utils';
 import { FlightStatus, IArrivingFlight, IDepartingFlight, IFlight } from './IFlight';
 import { Leg } from './Leg';
 
 export abstract class Flight implements IFlight, INotifyPropertyChanged {
 
-	private readonly _propertyChanged = new Subject<PropertyChangedObservableArgs>();
+	private readonly _propertyChanged = new Subject<PropertyChangedEventArgs>();
 	private _isPropertyChangedEnabled: boolean = true;
 	private readonly _animation: Animation = new Animation();
 	private _animationTimeline: anime.AnimeTimelineInstance;
 	private _isPaused: boolean = false;
 
-	get propertyChanged(): Observable<PropertyChangedObservableArgs> {
+	get propertyChanged(): Observable<PropertyChangedEventArgs> {
 		return this._propertyChanged.asObservable();
 	}
 
@@ -138,15 +137,6 @@ export abstract class Flight implements IFlight, INotifyPropertyChanged {
 		this._animationTimeline.play();
 	}
 
-	setFlightElement(element: HTMLElement): void {
-		let pathId = element.id.replace('flight', '');
-		element.querySelector(`#flightCode${pathId}`).innerHTML = this.flightCode;
-		element.querySelector(`#airline${pathId}`).innerHTML = this.airline;
-		element.querySelector(`#location${pathId}`).innerHTML = Flight.isArrivingFlight(this) ?
-			this.comingFrom : Flight.isDepartingFlight(this) ? this.departingTo : '';
-		$(element).find(`#warning${pathId}`)[0].style.display = this.isEmergency ? '' : 'none';
-	}
-
 	// Returns true if flight has greater priority than other flight, otherwise returns false
 	compareByPriority(other: Flight): boolean {
 		if (!other)
@@ -197,7 +187,7 @@ export abstract class Flight implements IFlight, INotifyPropertyChanged {
 	private onPropertyChanged(propertyName: string, oldValue?: any): void {
 		this._updatedAt = new Date();
 		// if (this._isPropertyChangedEnabled)
-			this._propertyChanged.next(new PropertyChangedObservableArgs(propertyName, oldValue));
+			this._propertyChanged.next(new PropertyChangedEventArgs(propertyName, oldValue));
 	}
 
 	private setStoryElements(animationStory: IAnimationStory): void {
@@ -206,6 +196,15 @@ export abstract class Flight implements IFlight, INotifyPropertyChanged {
 			if (frame.element)
 				this.setFlightElement(frame.element);
 		});
+	}
+
+	private setFlightElement(element: HTMLElement): void {
+		let pathId = element.id.replace('flight', '');
+		element.querySelector(`#flightCode${pathId}`).innerHTML = this.flightCode;
+		element.querySelector(`#airline${pathId}`).innerHTML = this.airline;
+		element.querySelector(`#location${pathId}`).innerHTML = Flight.isArrivingFlight(this) ?
+			this.comingFrom : Flight.isDepartingFlight(this) ? this.departingTo : '';
+		$(element).find(`#warning${pathId}`)[0].style.display = this.isEmergency ? '' : 'none';
 	}
 
 	//#region static utilities

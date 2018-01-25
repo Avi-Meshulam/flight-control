@@ -1,17 +1,16 @@
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
-import { INotifyPropertyChanged, PropertyChangedObservableArgs } from '../shared/events';
+import { INotifyPropertyChanged, PropertyChangedEventArgs } from '../shared/events';
 import { IArrivingFlight, IDepartingFlight, IFlight } from './IFlight';
 import { ILeg, LegState, LegType } from './ILeg';
 import { ArrivingFlight, DepartingFlight, Flight } from './flight';
 
 export class Leg implements ILeg, INotifyPropertyChanged {
 
-	private readonly _propertyChanged = new Subject<PropertyChangedObservableArgs>();
+	private readonly _propertyChanged = new Subject<PropertyChangedEventArgs>();
 	private _isPropertyChangedEnabled: boolean = true;
 
-	get propertyChanged(): Observable<PropertyChangedObservableArgs> {
+	get propertyChanged(): Observable<PropertyChangedEventArgs> {
 		return this._propertyChanged.asObservable();
 	}
 
@@ -93,6 +92,6 @@ export class Leg implements ILeg, INotifyPropertyChanged {
 
 	private onPropertyChanged(propertyName: string, oldValue?: any): void {
 		// if (this._isPropertyChangedEnabled)
-			this._propertyChanged.next(new PropertyChangedObservableArgs(propertyName, oldValue));
+			this._propertyChanged.next(new PropertyChangedEventArgs(propertyName, oldValue));
 	}
 }

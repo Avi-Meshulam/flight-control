@@ -13,7 +13,7 @@ import { IFormattedTransmission, ITransmission, ReplyCode, Transmission } from '
 import DOMUtils, { IAttribute } from '../../shared/DOMUtils';
 import { Animation, IAnimationFrame, IAnimationStory } from '../../shared/animation';
 import { CONTROL_TOWER, LEGS, ONE_QUEUE_LEGS, ONE_WAY_NO_COMPETITION_LEGS } from '../../shared/constants';
-import { PropertyChangedObservableArgs } from '../../shared/events';
+import { PropertyChangedEventArgs } from '../../shared/events';
 import Utils from '../../shared/utils';
 import { DataService, DBCollection } from './services/data.service';
 import { OutgoingMessageType, SocketService } from './services/socket.service';
@@ -171,7 +171,7 @@ export class ControlTowerComponent implements AfterViewInit {
 	}
 
 	//#region 'Event' Handlers
-	private async flight_propertyChanged(flight: Flight, e: PropertyChangedObservableArgs): Promise<void> {
+	private async flight_propertyChanged(flight: Flight, e: PropertyChangedEventArgs): Promise<void> {
 		this.addFlightLog(flight);
 
 		if (e.propertyName === 'legId' && flight.legId)
@@ -200,7 +200,7 @@ export class ControlTowerComponent implements AfterViewInit {
 		// }
 	}
 
-	private async leg_propertyChanged(leg: Leg, e: PropertyChangedObservableArgs): Promise<void> {
+	private async leg_propertyChanged(leg: Leg, e: PropertyChangedEventArgs): Promise<void> {
 		// console.log(`Leg no. ${leg._id} ${e.propertyName} property changed to: ${leg[e.propertyName]}\n`);
 
 		// Save backup of leg's data

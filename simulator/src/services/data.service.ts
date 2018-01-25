@@ -1,5 +1,5 @@
 import * as querystring from 'querystring';
-import * as rd from 'request-debug';
+// import * as rd from 'request-debug';
 import * as rp from 'request-promise';
 
 export enum DBCollection {
