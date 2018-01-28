@@ -1,5 +1,5 @@
 # flight-control
-#### A MEAN Stack application with Typescript end-to-end.
+#### A MEAN full stack application with Typescript end-to-end.
 ![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/flight-control.gif "flight-control")
 
 The application consists of 3 projects, combined in a VS Code workspace:
