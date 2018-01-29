@@ -118,7 +118,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
 
 ### Map Panel
-- Right click on a plane image in legs 1-3 (in air arriving flights) to set emergency on/off.
+- Right click on a plane image in legs 1-3 (in-air-arriving-flights) to set emergency on/off.
 - Right click a leg (1-9) to close/reopen it.
 		
 	#### Close/Open Leg
