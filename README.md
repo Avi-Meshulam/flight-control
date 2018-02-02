@@ -1,6 +1,6 @@
 # flight-control
 ### A MEAN full stack application with Typescript end-to-end.
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/flight-control.gif "flight-control")
+![flight-control](https://github.com/PrisonerM13/flight-control/blob/master/gif/flight-control.gif "flight-control")
 
 The application consists of 3 projects, combined in a VS Code workspace:
 1. control-tower (UI Client) - [Angular 4](https://angular.io/)
@@ -70,14 +70,14 @@ The application consists of 3 projects, combined in a VS Code workspace:
 - Option 2: Double click on 'install.bat' in 'flight-control' folder.
 		
 	#### Easy Installation
-	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
+	![Easy Installation](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyInstallation.gif "Easy Installation")
 		
 ### 3. Run program:
 - Option 1: Open command prompt in 'control-tower' folder and type 'npm start'.
 - Option 2: Double click on 'run.bat' in 'flight-control' folder.
 
 	#### Easy Startup
-	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
+	![Easy Startup](https://github.com/PrisonerM13/flight-control/blob/master/gif/EasyStartup.gif "Easy Startup")
 		
 > "npm install" & "npm start" respectively install & run all 3 projects (control-tower, simulator and DAL).
 		
@@ -87,14 +87,14 @@ The application consists of 3 projects, combined in a VS Code workspace:
 
 ### Flight Data
 #### Interactive flight data triggered by mouse hovering
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/FlightData.gif "Flight Data")
+![Flight Data](https://github.com/PrisonerM13/flight-control/blob/master/gif/FlightData.gif "Flight Data")
 
 ### Communication Panel
 #### Simulating radio transmissions between control tower and flights
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Communication.gif "Communication")
+![Communication](https://github.com/PrisonerM13/flight-control/blob/master/gif/Communication.gif "Communication")
 
 ### Settings Panel
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Settings.png "Settings Panel")
+![Settings Panel](https://github.com/PrisonerM13/flight-control/blob/master/images/Settings.png "Settings Panel")
 		
 - Simulator Switch - Start/Stop generation of new flights.
 - Speed Range - Speed range as percentage out of max. speed (zero delay time)
@@ -115,17 +115,17 @@ The application consists of 3 projects, combined in a VS Code workspace:
 - Right click on a flight code in "Arrivals" or "Emergencies" queues to set emergency on/off.
 		
 	#### Set Emergency On/Off
-	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
+	![Set Emergency On/Off](https://github.com/PrisonerM13/flight-control/blob/master/gif/Emergency.gif "Set Emergency On/Off")
 
 ### Map Panel
 - Right click on a plane image in legs 1-3 (in-air-arriving-flights) to set emergency on/off.
 - Right click a leg (1-9) to close/reopen it.
 		
 	#### Close/Open Leg
-	![alt text](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
+	![Close Leg/Open Leg](https://github.com/PrisonerM13/flight-control/blob/master/gif/CloseLegOpenLeg.gif "Close Leg/Open Leg")
 		
 ## DB structure
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/Diagram.png "DB Schema")
+![DB Schema](https://github.com/PrisonerM13/flight-control/blob/master/images/Diagram.png "DB Schema")
 		
 | Collection          | Description   
 | ------------------- | ------------- 
@@ -144,10 +144,10 @@ The application consists of 3 projects, combined in a VS Code workspace:
 > Routes pattern: MONGODB_URI/{collection name}
 		
 #### 'legs' collection's 'flight' field, hosts both arriving and departing flights, discriminated by key named 'direction':
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
+![Legs Collection Details](https://github.com/PrisonerM13/flight-control/blob/master/images/legs-details.png "Legs Collection Details")
 		
 #### 'flightLog' collection hosts both arriving and departing flights, discriminated by key named 'direction':
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/flightLog.png "flightLog Collection")
+![flightLog Collection](https://github.com/PrisonerM13/flight-control/blob/master/images/flightLog.png "flightLog Collection")
 		
 ### Leg States
 | State               | Description  
@@ -159,7 +159,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 | Saved               | Leg is saved for a flight that confirmed directions.
 | Occupied            | Leg is occupied by a flight.
 		
-![alt text](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
+![Legs Collection](https://github.com/PrisonerM13/flight-control/blob/master/images/legs.png "Legs Collection")
 		
 ### Flight Status
 | Status   | Description
