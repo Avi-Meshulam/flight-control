@@ -1230,7 +1230,7 @@ export class ControlTowerComponent implements AfterViewInit {
 			.filter((val, index, arr) => arr.indexOf(val) === index);
 
 		allElements
-			// Remove the following line to add contect menu to ALL flight elements
+			// Remove the call to filter() to add content menu to ALL flight elements
 			.filter(element => element.id.includes('1') || element.id.includes('2'))
 			.forEach(element => this.initFlightElementContextMenu(element));
 	}
