@@ -1,5 +1,5 @@
 # flight-control
-### A MEAN full stack application with Typescript end-to-end.
+### A MEAN full stack application, simulating a workflow of an air traffic control tower, written in typescript end-to-end, with angular 4, node.js, express and mongoDB.
 ![flight-control](https://github.com/PrisonerM13/flight-control/blob/master/gif/flight-control.gif "flight-control")
 
 The application consists of 3 projects, combined in a VS Code workspace:
