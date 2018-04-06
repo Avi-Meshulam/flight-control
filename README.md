@@ -152,7 +152,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 ### Leg States
 | State               | Description  
 | ------------------- | -----------
-| Unoccupied          | 
+| Unoccupied          | Leg is NOT occupied by a flight.
 | Move Direction Sent | A flight was directed to enter leg, but has not yet confirmed.
 | Move Confirmed      | A flight confirmed directions to enter leg.
 | Marked For Save     | Leg should be saved for a flight, once that flight confirms directions.
