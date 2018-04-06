@@ -9,7 +9,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 
 > Communication between UI and Simulator is done via bidirectional socket ([socket.io](https://github.com/socketio/socket.io),  [socket.io-client](https://github.com/socketio/socket.io-client))
 		
-> Communication between UI/Simulator and DAL is done via HTTP.
+> Communication between UI/Simulator and DAL is done via HTTP (Angular/Request-Promise respectively).
 		
 ## Features/Technologies/Tools
 - Observables/Subjects: [rxjs](http://reactivex.io/documentation/observable.html).
