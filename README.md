@@ -9,7 +9,7 @@ The application consists of 3 projects, combined in a VS Code workspace:
 
 > Communication between UI and Simulator is done via bidirectional socket ([socket.io](https://github.com/socketio/socket.io),  [socket.io-client](https://github.com/socketio/socket.io-client))
 		
-> Communication between UI/Simulator and DAL is done via HTTP (Angular/Request-Promise respectively).
+> Communication between UI/Simulator and DAL is done via HTTP ([Angular - HttpClient](https://angular.io/guide/http) and [Request-Promise](https://github.com/request/request-promise) respectively).
 		
 ## Features/Technologies/Tools
 - Observables/Subjects: [rxjs](http://reactivex.io/documentation/observable.html).
@@ -18,7 +18,6 @@ The application consists of 3 projects, combined in a VS Code workspace:
 - UI design: [Bootstrap 3](https://getbootstrap.com/docs/3.3/).
 - Settings UI: [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) & [ngx-ui-switch](https://github.com/webcat12345/ngx-ui-switch).
 - Right-click menus: [jquery-contextmenu](https://github.com/swisnl/jQuery-contextMenu).
-- HTTP communication between simulator and DAL: [request-promise](https://github.com/request/request-promise).
 - mongoose discriminators on both collection level and field level.
 - [jQuery](https://jquery.com/).
 
