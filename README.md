@@ -105,11 +105,11 @@ The application consists of 3 projects, combined in a VS Code workspace:
 		
 	> Recommended values: min: ~92%, max: ~98%.
 - Safety Mode:
-	- Pessimistic - Planes are allowed to move only when preceding plane reaches his leg.
-	- Optimistic - Planes are allowed to move as soon as preceding plane confirms move, excluding runaway track.
-	- Risky - Planes are allowed to move as soon as preceding plane confirms move, including runaway track.
+	- Pessimistic - Planes are instructed to move only when preceding plane reaches his leg.
+	- Optimistic - Planes are instructed to move as soon as preceding plane confirms move, **excluding** runaway track.
+	- Risky - Planes are instructed to move as soon as preceding plane confirms move, **including** runaway track.
 - Radio response time - Delay in response in communication between control-tower & planes.
-- Simulator Interval Range - Interval range for generating new flights.
+- Simulator Interval Range - Interval range for new flights' generation.
 
 ### Queues Panel
 - Right click on a flight code in "Arrivals" or "Emergencies" queues to set emergency on/off.
