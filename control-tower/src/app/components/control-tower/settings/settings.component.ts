@@ -237,11 +237,11 @@ export class SettingsComponent implements AfterViewInit {
 
 		switch (storyTitle) {
 			// case 'leg1start':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			// case 'leg1to2':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			// case 'leg2to3':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			case 'leg3to4':
 				return baseDuration * 2.5;
 			case 'leg4to5':
@@ -249,24 +249,24 @@ export class SettingsComponent implements AfterViewInit {
 			case 'leg5to6':
 				return baseDuration * 2;
 			// case 'leg6end':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			case 'leg5to7': return baseDuration * 3;
 			// case 'leg7end':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			// case 'leg6start':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			case 'leg6to8':
 				return baseDuration * 3;
 			// case 'leg7start':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			case 'leg7to8':
 				return baseDuration * 2;
 			// case 'leg8to4':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			case 'leg4to9':
 				return baseDuration * 1.5;
 			// case 'leg9end':
-			// 	return defaultDuration;
+			// 	return baseDuration;
 			default:
 				return baseDuration;
 		}
