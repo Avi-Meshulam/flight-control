@@ -7,9 +7,9 @@ The application consists of 3 projects, combined in a VS Code workspace:
 2. simulator (flights generator) - [node.js](https://nodejs.org/en/), [express](https://expressjs.com/)
 3. DAL - node.js, express, [mongoose 4](http://mongoosejs.com/)
 
-> Communication between UI and Simulator is done via bidirectional socket ([socket.io](https://github.com/socketio/socket.io),  [socket.io-client](https://github.com/socketio/socket.io-client))
+> Communication between UI and Simulator is done via bidirectional socket ([socket.io](https://github.com/socketio/socket.io),  [socket.io-client](https://github.com/socketio/socket.io-client)).
 		
-> Communication between UI/Simulator and DAL is done via HTTP ([Angular - HttpClient](https://angular.io/guide/http) and [Request-Promise](https://github.com/request/request-promise) respectively).
+> Communication between UI/Simulator and DAL is done via HTTP (UI: [Angular-HttpClient](https://angular.io/guide/http); Simulator: [Request-Promise](https://github.com/request/request-promise)).
 		
 ## Features/Technologies/Tools
 - Observables/Subjects: [rxjs](http://reactivex.io/documentation/observable.html).
